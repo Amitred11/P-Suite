@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}My Account | P-Suite{% endblock %}
+{% block content %}
+<div class="site-header">
+    <h1>My Account</h1>
+    <p>Manage your subscription and credit balance.</p>
+</div>
+<div class="account-grid">
+    <div class="account-card">
+        <h4>Account Information</h4>
+        <div class="info-row">
+            <span>Username</span>
+            <span class="username-display">{{ current_user.username }}</span>
+        </div>
+        <div class="info-row">
+            <span>Email</span>
+            <span class="username-display">{{ current_user.email }}</span>
+        </div>
+        <div class="info-row">
+            <span>Current Plan</span>
+            <span class="plan-badge plan-{{ current_user.plan }}">{{ current_user.plan|capitalize }}</span>
+        </div>
+         <a href="#" class="account-link disabled">Change Password (coming soon)</a>
+         <a href="#" class="account-link disabled">Update Email (coming soon)</a>
+    </div>
+    <div class="account-card">
+        <h4>Credit Balance</h4>
+        <div class="credits-meter-container">
+            <div class="credits-meter-value">{{ current_user.credits }}</div>
+            <p>Credits Remaining</p>
+            <div class="credits-meter-bar">
+                <div class="credits-meter-fill" style="width: {{ (current_user.credits / 500) * 100 }}%;"></div>
+            </div>
+             <p class="credits-subtext">Credits reset monthly for subscribers.</p>
+        </div>
+        <a href="{{ url_for('main.pricing') }}" class="btn btn-primary" style="width:100%; margin-top: 1.5rem;">Buy More Credits / Upgrade</a>
+    </div>
+</div>
+{% endblock %}

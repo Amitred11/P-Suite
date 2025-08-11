@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Pricing | P-Suite{% endblock %}
+{% block content %}
+<div class="site-header">
+    <h1>Choose Your Plan</h1>
+    <p>Unlock powerful features and get the credits you need to build with confidence.</p>
+</div>
+<div class="pricing-table">
+    <div class="pricing-card">
+        <h3>Free</h3>
+        <div class="price"><sup>$</sup>0<span>/ mo</span></div>
+        <p class="pricing-description">Perfect for trying out the suite on personal projects.</p>
+        <ul>
+            <li><i class="fas fa-check-circle"></i> 10 One-Time Credits</li>
+            <li><i class="fas fa-check-circle"></i> Standard Optimizations</li>
+            <li><i class="fas fa-check-circle"></i> Basic Security Scans</li>
+            <li><i class="fas fa-times-circle"></i> Premium Dependency Scans</li>
+            <li><i class="fas fa-times-circle"></i> Pro Performance Features</li>
+        </ul>
+        <a href="{{ url_for('auth.register') }}" class="btn btn-secondary" style="width:100%;">Get Started</a>
+    </div>
+    <div class="pricing-card featured">
+        <div class="ribbon"><span>Best Value</span></div>
+        <h3>Premium</h3>
+        <div class="price"><sup>$</sup>15<span>/ mo</span></div>
+        <p class="pricing-description">For professionals who need advanced security checks.</p>
+        <ul>
+            <li><i class="fas fa-check-circle"></i> 100 Credits / Month</li>
+            <li><i class="fas fa-check-circle"></i> Standard Optimizations</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Premium Security Scans</strong></li>
+            <li><i class="fas fa-times-circle"></i> Pro Performance Features</li>
+        </ul>
+        <button class="btn btn-primary upgrade-btn" data-plan="Premium" data-price="15" style="width:100%;">Upgrade Now</button>
+    </div>
+    <div class="pricing-card">
+        <h3>Pro</h3>
+        <div class="price"><sup>$</sup>29<span>/ mo</span></div>
+        <p class="pricing-description">For teams and agencies demanding maximum performance.</p>
+        <ul>
+            <li><i class="fas fa-check-circle"></i> 500 Credits / Month</li>
+            <li><i class="fas fa-check-circle"></i> Standard Optimizations</li>
+            <li><i class="fas fa-check-circle"></i> Premium Security Scans</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Pro Performance Features</strong></li>
+        </ul>
+        <button class="btn btn-primary upgrade-btn" data-plan="Pro" data-price="29" style="width:100%;">Go Pro</button>
+    </div>
+</div>
+
+<!-- Payment Modal -->
+<div id="payment-modal" class="modal-backdrop" style="display:none;">
+    <div class="modal-content">
+        <button id="close-modal-btn" class="modal-close-btn">&times;</button>
+        <div class="modal-header">
+            <h3>Upgrade to <span id="modal-plan-name"></span></h3>
+            <p>Complete your secure payment below.</p>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="card-holder">Card Holder</label>
+                <input type="text" id="card-holder" name="card-holder" placeholder="Jane Doe">
+            </div>
+            <div class="form-group">
+                <label for="card-details">Card Details</label>
+                <div id="card-element" class="mock-card-element">
+                    <i class="fab fa-cc-visa"></i>
+                    <span>4242 4242 4242 4242</span>
+                    <span>12/26</span>
+                    <span>123</span>
+                </div>
+            </div>
+            <div class="modal-summary">
+                <span>Plan: <strong id="summary-plan-name"></strong></span>
+                <span>Price: <strong id="summary-plan-price"></strong>/month</span>
+            </div>
+            <button id="submit-payment-btn" class="btn btn-primary" style="width:100%">Confirm Payment</button>
+            <p class="payment-disclaimer">This is a demo. No real transaction will be made.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

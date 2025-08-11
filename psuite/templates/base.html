@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}P-Suite{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="page-wrapper">
+        <nav class="main-nav">
+            <a href="{{ url_for('main.home') }}" class="nav-brand"><i class="fas fa-rocket"></i> P-Suite</a>
+            <div class="nav-links">
+                <a href="{{ url_for('tools.frontend_optimizer') }}" class="nav-link {% if request.endpoint == 'tools.frontend_optimizer' %}active{% endif %}">Optimizer</a>
+                <a href="{{ url_for('tools.backend_analyzer') }}" class="nav-link {% if request.endpoint == 'tools.backend_analyzer' %}active{% endif %}">Analyzer</a>
+                <a href="{{ url_for('tools.security_scanner') }}" class="nav-link {% if request.endpoint == 'tools.security_scanner' %}active{% endif %}">Scanner</a>
+                <a href="{{ url_for('main.pricing') }}" class="nav-link {% if request.endpoint == 'main.pricing' %}active{% endif %}">Pricing</a>
+            </div>
+            <div class="nav-auth">
+                {% if current_user.is_authenticated %}
+                    <span class="credits-display"><i class="fas fa-coins"></i> {{ current_user.credits }} Credits</span>
+                    <div class="user-menu-wrapper">
+                        <button class="btn-user-menu">{{ current_user.username[0]|upper }}</button>
+                        <div class="user-dropdown">
+                            <a href="{{ url_for('main.account') }}">My Account</a>
+                            <a href="{{ url_for('auth.logout') }}">Logout</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <a href="{{ url_for('auth.login') }}" class="btn btn-secondary">Login</a>
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-primary">Sign Up</a>
+                {% endif %}
+            </div>
+        </nav>
+
+        <div class="main-container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-messages-container">
+                    {% for category, message in messages %}
+                        <div class="flash-message {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </div>
+        <footer class="main-footer">
+            <p>&copy; 2024 P-Suite. All Rights Reserved. A demonstration project.</p>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Security Scanner | P-Suite{% endblock %}
+{% block content %}
+<header class="site-header">
+    <div class="header-icon-wrapper" style="background-color: #dcfce7; color: #16a34a;"><i class="fas fa-user-secret header-icon"></i></div>
+    <h1>Project Security Scanner</h1>
+    <p>Scan your project for common high-risk vulnerabilities before deployment.</p>
+</header>
+<main>
+    <form id="security-scanner-form" class="tool-form">
+        <div id="drop-zone" class="drop-zone">
+            <div class="drop-zone-prompt"><i class="fas fa-cloud-upload-alt"></i><p><strong>Drag & Drop Project ZIP</strong></p><span class="prompt-separator">or</span><label for="file-input" class="file-browse-btn">Browse Your Computer</label></div>
+            <input type="file" id="file-input" name="file" required accept=".zip">
+        </div>
+        <div class="tool-description">
+            <p>This tool performs automated checks for critical security issues:</p>
+            <ul>
+                <li><i class="fas fa-bug"></i> <strong>Python Dependency Vulnerabilities:</strong> Scans <code>requirements.txt</code> using <code>pip-audit</code>.</li>
+                <li><i class="fas fa-key"></i> <strong>Hardcoded Secrets:</strong> Scans all files for patterns like <code>API_KEY = "..."</code>.</li>
+                <li><i class="fas fa-toggle-on"></i> <strong>Debug Mode:</strong> Checks for common ways debug mode is left enabled in code.</li>
+                <li class="{% if current_user.plan not in ['premium', 'pro'] %}disabled-feature{% endif %}">
+                    <i class="fab fa-node-js"></i> <strong>Node.js Dependency Vulnerabilities <span class="premium-badge">PREMIUM</span></strong> 
+                    {% if current_user.plan not in ['premium', 'pro'] %}<a href="{{ url_for('main.pricing') }}">Upgrade to unlock.</a>{% endif %}
+                </li>
+            </ul>
+        </div>
+        <button type="submit" id="submit-button" class="btn btn-primary" style="width:100%;" disabled><i class="fas fa-shield-alt"></i><span>Run Security Scan (1 Credit)</span></button>
+    </form>
+
+    <div id="processing-section" class="processing-section" style="display:none;">
+        <div id="live-console" class="live-console"><div class="console-header"><span id="console-header-title">SECURITY REPORT</span></div><div class="console-output" id="console-output"></div></div>
+    </div>
+    
+    <div id="post-run-actions" style="display:none;">
+        <button id="restart-button" class="btn btn-secondary"><i class="fas fa-redo"></i> Run New Scan</button>
+    </div>
+</main>
+{% endblock %}

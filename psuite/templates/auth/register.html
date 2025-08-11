@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Register | P-Suite{% endblock %}
+{% block content %}
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <div class="auth-header">
+            <div class="header-icon-wrapper auth-icon"><i class="fas fa-user-plus"></i></div>
+            <h2>Create Your Account</h2>
+            <p>Get 10 free credits upon registration!</p>
+        </div>
+        <form method="POST" action="{{ url_for('auth.register') }}" class="auth-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <div class="input-icon-wrapper">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" name="username" placeholder="Choose a unique username" required>
+                </div>
+            </div>
+             <div class="form-group">
+                <label for="email">Email Address</label>
+                <div class="input-icon-wrapper">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-icon-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%; margin-top: 1rem;">Create Account</button>
+        </form>
+        <p class="auth-switch">Already have an account? <a href="{{ url_for('auth.login') }}">Login here</a></p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+Flask
+Flask-SocketIO
+Flask-SQLAlchemy
+Flask-Login
+Pillow
+cssmin
+minify-html
+beautifulsoup4
+lxml
+flake8
+vulture
+pip-audit
+google-generativeai
+werkzeug

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Backend Analyzer | P-Suite{% endblock %}
+{% block content %}
+<header class="site-header">
+    <div class="header-icon-wrapper" style="background-color: #f0e7ff; color: #7c3aed;"><i class="fas fa-microchip header-icon"></i></div>
+    <h1>Backend Code Analyzer</h1>
+    <p>Scan your Python project for code style issues and dead code.</p>
+</header>
+<main>
+    <form id="backend-analyzer-form" class="tool-form">
+        <div id="drop-zone" class="drop-zone">
+            <div class="drop-zone-prompt"><i class="fas fa-cloud-upload-alt"></i><p><strong>Drag & Drop Project ZIP</strong></p><span class="prompt-separator">or</span><label for="file-input" class="file-browse-btn">Browse Your Computer</label></div>
+            <input type="file" id="file-input" name="file" required accept=".zip">
+        </div>
+        <div class="tool-description">
+            <p>This tool will analyze your Python codebase using industry-standard linters:</p>
+            <ul>
+                <li><i class="fab fa-python"></i> <strong>Flake8:</strong> Checks for style guide conformance (PEP 8) and logical errors.</li>
+                <li><i class="fas fa-trash-alt"></i> <strong>Vulture:</strong> Scans for and reports unused "dead" code.</li>
+            </ul>
+        </div>
+        <button type="submit" id="submit-button" class="btn btn-primary" style="width:100%;" disabled><i class="fas fa-search"></i><span>Analyze Code (1 Credit)</span></button>
+    </form>
+
+    <div id="processing-section" class="processing-section" style="display:none;">
+        <div id="live-console" class="live-console"><div class="console-header"><span id="console-header-title">ANALYSIS LOG</span></div><div class="console-output" id="console-output"></div></div>
+    </div>
+
+    <div id="post-run-actions" style="display:none;">
+        <button id="restart-button" class="btn btn-secondary"><i class="fas fa-redo"></i> Run New Analysis</button>
+    </div>
+</main>
+{% endblock %}
