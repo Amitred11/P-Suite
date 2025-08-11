@@ -1,7 +1,3 @@
-Of course! Here is a comprehensive and professional `README.md` file for the P-Suite project. This file explains what the project is, its features, the technology stack, and provides clear instructions for setup and installation.
-
----
-
 # P-Suite: The All-in-One Web Production Suite
 
 P-Suite is a powerful, interactive web application built with Flask and Socket.IO. It provides a suite of tools designed to help web developers optimize, analyze, and secure their projects before deployment. Users can upload a project as a ZIP file, select from various processing options, and receive real-time feedback and downloadable results.
