@@ -1,8 +1,13 @@
+> **⚠️ Project Archived & Non-Functional ⚠️**
+>
+> Please be aware that this project is an **archived demonstration** and is **no longer in active development**. It is **not fully functional** and some features described below are incomplete or contain bugs. There are no plans to continue development on this project.
+>
+> It serves as a portfolio piece to showcase a specific architecture and set of technologies from a point in time.
+
 # P-Suite: The All-in-One Web Production Suite
 
 ![License](https://img.shields.io/badge/license-MIT-lightgrey.svg) ![Status](https://img.shields.io/badge/status-Educational-orange) 
 
-<h1 color='blue'>DONT WANT TO FINISH IT AHAHAHA</h1>
 
 P-Suite is a powerful, interactive web application built with Flask and Socket.IO. It provides a suite of tools designed to help web developers optimize, analyze, and secure their projects before deployment. Users can upload a project as a ZIP file, select from various processing options, and receive real-time feedback and downloadable results.
 
