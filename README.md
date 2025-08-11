@@ -1,6 +1,6 @@
 > **⚠️ Project Archived & Non-Functional ⚠️**
 >
-> Please be aware that this project is an **archived demonstration** and is **no longer in active development**. It is **not fully functional** and some features described below are incomplete or contain bugs. There are no plans to continue development on this project.
+> Please be aware that this project is an **archived demonstration** and is **no longer in active development**. It is **not fully functional** and some features described below are incomplete or contain bugs. There are no plans to continue development on this project, but I might continue this project in the future.
 >
 > It serves as a portfolio piece to showcase a specific architecture and set of technologies from a point in time.
 
